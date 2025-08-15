@@ -1,6 +1,11 @@
 class StatesController < ApplicationController
   before_action :set_service
-
+  RETURN_DTO = {
+    index: GetStateDto,
+    show:  GetStateDto,
+    create: GetStateDto,
+    update: GetStateDto
+  }
   # GET /states
   def index
     render json: @service.list_states

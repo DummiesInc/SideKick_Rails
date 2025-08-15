@@ -5,6 +5,7 @@
     "version": "1.0"
   },
   "paths": {
+    "/up": {},
     "/states": {
       "get": {
         "tags": [
@@ -176,7 +177,47 @@
           }
         }
       }
-    }
+    },
+    "/discipline": {
+      "get": {
+        "tags": [
+          "Discipline"
+        ],
+        "summary": "index discipline",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetDisciplineDto"
+                  }
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetDisciplineDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetDisciplineDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {}
   },
   "components": {
     "schemas": {
@@ -184,7 +225,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "integer"
+            "type": "string"
           },
           "name": {
             "type": "string"
@@ -194,8 +235,33 @@
           }
         },
         "required": [
+          "id",
           "name",
           "abbreviation"
+        ],
+        "additionalProperties": false
+      },
+      "GetDisciplineDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "abbreviation": {
+            "type": "string"
+          },
+          "isForProvider": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "abbreviation",
+          "isForProvider"
         ],
         "additionalProperties": false
       }
