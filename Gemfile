@@ -50,4 +50,4 @@ end
 gem 'rswag-ui'
 gem 'rswag-api'
 gem 'rswag-specs'
-gem 'rspec-rails', '~> 6.0'
+gem 'rspec-rails', '~> 8.0'
