@@ -124,7 +124,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetStateDto"
+                "$ref": "#/components/schemas/UpdateStateDto"
               }
             }
           }
@@ -171,7 +171,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetStateDto"
+                "$ref": "#/components/schemas/UpdateStateDto"
               }
             }
           }
@@ -221,11 +221,31 @@
   },
   "components": {
     "schemas": {
+      "UpdateStateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "abbreviation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "abbreviation"
+        ],
+        "additionalProperties": false
+      },
       "GetStateDto": {
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string"
@@ -245,7 +265,7 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "integer"
           },
           "name": {
             "type": "string"

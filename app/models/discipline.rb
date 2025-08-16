@@ -10,6 +10,6 @@ class Discipline < ApplicationRecord
     def set_defaults
       self.name ||= ""
       self.abbreviation ||= ""
-      self.isForProvider || false
+      self.isForProvider = false if self.isForProvider.nil?
     end
 end

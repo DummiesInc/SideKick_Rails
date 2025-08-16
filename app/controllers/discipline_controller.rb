@@ -2,10 +2,8 @@ class DisciplineController < ApplicationController
   before_action :set_service
 
   RETURN_DTO = {
-    index: GetDisciplineDto,
-    show:  GetDisciplineDto,
-    create: GetDisciplineDto,
-    update: GetDisciplineDto
+    index: { response: GetDisciplineDto },
+    show:  { response: GetDisciplineDto },
   }
 
   def index

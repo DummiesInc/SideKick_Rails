@@ -1,10 +1,20 @@
 class StatesController < ApplicationController
   before_action :set_service
+
+  # # dto:generate
+  # RETURN_DTO = {
+  #   index:  { response: GetStateDto },
+  #   show:   { response: GetStateDto },
+  #   create: { request: UpdateStateDto, response: GetStateDto },
+  #   update: { request: UpdateStateDto, response: GetStateDto }
+  # }
+
+  # dtov2:generate
   RETURN_DTO = {
-    index: GetStateDto,
-    show:  GetStateDto,
-    create: GetStateDto,
-    update: GetStateDto
+    index:  { response: GetStateDto },
+    show:   { response: GetStateDto },
+    create: { params: UpdateStateDto, response: GetStateDto },
+    update: { params: UpdateStateDto, response: GetStateDto }
   }
   # GET /states
   def index
