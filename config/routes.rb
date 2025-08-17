@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :states, only: [:index, :show, :update]
   resources :capital, only: [:index]
   resources :customer, only: [:create]
+  get '/franchise/customer/:customer_id', to: 'franchise#for_customer'
   # Defines the root path route ("/")
   # root "posts#index"
 end
