@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  buy_in_reason: MyString
+  vision: MyString
+  involvement: MyString
+  capital: one
+  finance_required: false
+  start_date: 2025-08-17 09:44:12
+
+two:
+  first_name: MyString
+  last_name: MyString
+  buy_in_reason: MyString
+  vision: MyString
+  involvement: MyString
+  capital: two
+  finance_required: false
+  start_date: 2025-08-17 09:44:12

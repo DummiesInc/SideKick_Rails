@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
 
   resources :states, only: [:index, :show, :update]
+  resources :capital, only: [:index]
+  resources :customer, only: [:create]
   # Defines the root path route ("/")
   # root "posts#index"
 end
