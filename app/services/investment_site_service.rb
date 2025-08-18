@@ -16,7 +16,6 @@ class InvestmentSiteService
     )
 
     sites.map do |site|
-      puts "Testing -> #{site.franchise.capital.name}"
       {
         franchise: {
           id: site.franchise.id,

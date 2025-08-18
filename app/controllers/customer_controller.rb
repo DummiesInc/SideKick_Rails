@@ -12,7 +12,6 @@ class CustomerController < ApplicationController
     @service = CustomerService.new
   end
 
-  # but on the server side I am correctly mapping them
   def customer_params
     {
       first_name: params[:firstName],
