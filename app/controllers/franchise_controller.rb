@@ -8,9 +8,23 @@ class FranchiseController < ApplicationController
     render json: result
   end
 
+  def all_franchises
+    # puts "Test #{pagination_params}"
+    result = @service.list_franchises(pagination_params)
+    render json: result
+  end
+
   private
 
   def set_service
     @service = FranchiseService.new
+  end
+
+  def pagination_params
+    {
+      page: (params[:page] || 1).to_i,
+      per_page: (params[:perPage] || 10).to_i,
+      franchise_name: params.dig(:param, :franchiseName)
+    }
   end
 end

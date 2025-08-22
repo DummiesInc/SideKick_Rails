@@ -1,5 +1,45 @@
 # app/services/franchise_service.rb
 class FranchiseService
+
+  def list_franchises(attr)
+    # Pagination with kaminari gem
+    # franchises = Franchise
+    #   .includes(:capital)
+    #                .page(attr[:page]).per(attr[:per_page])
+    #
+
+    franchises = Franchise.all
+
+    # Filter by name if provided
+    puts "what - #{attr[:franchise_name]}"
+    if attr[:franchise_name].present?
+      puts "testing"
+      # Use ILIKE for case-insensitive search (Postgres)
+      franchises = franchises.where("name ILIKE ?", "%#{attr[:franchise_name]}%")
+
+    end
+
+    # Eager load associations
+    franchises = franchises.includes(:capital)
+
+    # Paginate
+    franchises = franchises.page(attr[:page]).per(attr[:per_page])
+
+    {
+
+      franchises: franchises.map do |franchise|
+        {
+          id: franchise.id,
+          name: franchise.name,
+          capital:{
+            name: franchise.capital.name,
+          }
+        }
+      end,
+      totalPages: franchises.total_pages,
+      totalCount: franchises.total_count
+    }
+  end
   def list_franchises_for_customer(customer_id)
     customer = Customer.find_by(id: customer_id)
 
