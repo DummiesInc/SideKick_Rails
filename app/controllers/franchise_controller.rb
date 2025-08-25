@@ -14,6 +14,11 @@ class FranchiseController < ApplicationController
     render json: result
   end
 
+  def get_franchise_profile
+    result = @service.franchise_profile(params[:franchise_id])
+    render json: result
+  end
+
   private
 
   def set_service

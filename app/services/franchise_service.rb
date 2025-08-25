@@ -40,10 +40,21 @@ class FranchiseService
       totalCount: franchises.total_count
     }
   end
+
+  def franchise_profile(franchise_id)
+    franchise = Franchise.find_by(id: franchise_id)
+    return {
+      franchise: {}
+    } unless franchise.present?
+
+    {
+      franchise: franchise
+    }
+
+  end
   def list_franchises_for_customer(customer_id)
     customer = Customer.find_by(id: customer_id)
 
-    puts customer.buy_in_reason
     return {
       customerName: '',
       buyInReason: '',

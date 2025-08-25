@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :capital, only: [:index]
   resources :customer, only: [:create]
   get '/franchises' => 'franchise#all_franchises'
+  get '/franchise/:franchise_id' => 'franchise#get_franchise_profile'
   get '/franchise/customer/:customer_id', to: 'franchise#for_customer'
   get '/investment/location', to: 'investment_site#search'
   # Defines the root path route ("/")

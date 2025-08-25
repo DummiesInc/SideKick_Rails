@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_18_123723) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_25_145636) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "brand_reputation_tables", force: :cascade do |t|
+    t.date "founding_date"
+    t.string "franchise_program_year"
+    t.integer "total_units"
+    t.float "growth_rate"
+    t.integer "satisfaction_score"
+    t.bigint "franchise_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["franchise_id"], name: "index_brand_reputation_tables_on_franchise_id"
+  end
 
   create_table "capitals", force: :cascade do |t|
     t.string "name"
@@ -39,6 +51,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_123723) do
     t.bigint "capital_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "website"
+    t.string "mission"
+    t.string "contact_person"
+    t.string "phone_umber"
     t.index ["capital_id"], name: "index_franchises_on_capital_id"
   end
 
@@ -58,6 +74,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_18_123723) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "brand_reputation_tables", "franchises"
   add_foreign_key "customers", "capitals"
   add_foreign_key "franchises", "capitals"
   add_foreign_key "investment_sites", "franchises"
