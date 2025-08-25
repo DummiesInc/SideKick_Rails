@@ -8,7 +8,6 @@ class CreateBrandReputationTable < ActiveRecord::Migration[8.0]
       t.integer :satisfaction_score
 
       t.references :franchise, null: false, foreign_key: true
-
       t.timestamps
     end
   end

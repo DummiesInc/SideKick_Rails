@@ -42,13 +42,23 @@ class FranchiseService
   end
 
   def franchise_profile(franchise_id)
-    franchise = Franchise.find_by(id: franchise_id)
+    franchise = Franchise
+                  .includes(:brand_reputation)
+                  .includes(:financial_information)
+                  .includes(:operation_information)
+                  .find_by(id: franchise_id)
     return {
-      franchise: {}
+      franchise: {},
+      brandReputation: nil,
+      financialInformation: nil,
+      operationInformation: nil
     } unless franchise.present?
 
     {
-      franchise: franchise
+      franchise: franchise,
+      brandReputation: franchise.brand_reputation&.as_json,
+      financialInformation: franchise.financial_information&.as_json,
+      operationInformation: franchise.operation_information&.as_json
     }
 
   end
